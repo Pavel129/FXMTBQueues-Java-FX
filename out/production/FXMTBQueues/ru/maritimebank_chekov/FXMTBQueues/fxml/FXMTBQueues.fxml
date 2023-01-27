@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import ru.inversion.fx.form.controls.JInvCalendar?>
+<?import ru.inversion.fx.form.controls.JInvComboBox?>
+<?import ru.inversion.fx.form.controls.JInvLabel?>
+<?import ru.inversion.fx.form.controls.JInvTabPane?>
+<?import ru.inversion.fx.form.controls.JInvTable?>
+<?import ru.inversion.fx.form.controls.JInvTableColumn?>
+<?import ru.inversion.fx.form.controls.JInvTableColumnDate?>
+<?import ru.inversion.fx.form.controls.JInvTextArea?>
+<?import ru.inversion.fx.form.controls.JInvToolBar?>
+
+<VBox prefHeight="800.0" prefWidth="1280.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.maritimebank_chekov.FXMTBQueues.FXMTBQueuesController">
+   <children>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints halignment="LEFT" />
+          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
+        </columnConstraints>
+         <children>
+            <JInvToolBar fx:id="toolBar" />
+            <JInvToolBar fx:id="filterBar" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1">
+               <items>
+                  <JInvCalendar fx:id="PERIOD_END" nodeOrientation="LEFT_TO_RIGHT" />
+                  <JInvLabel nodeOrientation="LEFT_TO_RIGHT" text="%LABEL.PERIOD.END" />
+                  <JInvCalendar fx:id="PERIOD_START" nodeOrientation="LEFT_TO_RIGHT" />
+                  <JInvLabel nodeOrientation="LEFT_TO_RIGHT" text="%LABEL.PERIOD.START" />
+                  <JInvComboBox fx:id="FILTER_STATUS" nodeOrientation="LEFT_TO_RIGHT" />
+				  <JInvLabel nodeOrientation="LEFT_TO_RIGHT" text="%LABEL.FILTER_STATUS" />
+               </items>
+            </JInvToolBar>
+         </children>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+		<SplitPane dividerPositions="0.8218997361477572" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+			<items>
+				<JInvTabPane>
+				 <tabs>
+					<Tab text="%TAB.LOG"> <!-- Журнал ошибок/сообщений -->
+					<content>
+						  <JInvTable fx:id="MTBVXD_LOG" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="ID_MTB_LOG" fieldName="ID_MTB_LOG" prefWidth="75.0" text="%LOG.ID_MTB_LOG" />
+								<JInvTableColumnDate fx:id="DDATE" fieldName="DDATE" prefWidth="75.0" text="%LOG.DDATE" />
+								<JInvTableColumn fx:id="LOG_CUSER" fieldName="CUSER" prefWidth="75.0" text="%LOG.CUSER" />
+								<JInvTableColumn fx:id="CEXTTYPE" fieldName="CEXTTYPE" prefWidth="75.0" text="%LOG.CEXTTYPE" />
+								<JInvTableColumn fx:id="LOG_ICUSNUM" fieldName="ICUSNUM" prefWidth="75.0" text="%LOG.ICUSNUM" />
+								<JInvTableColumn fx:id="CACCACC" fieldName="CACCACC" prefWidth="75.0" text="%LOG.CACCACC" />
+								<JInvTableColumn fx:id="LOG_CPLCNUM" fieldName="CPLCNUM" prefWidth="75.0" text="%LOG.CPLCNUM" />
+								<JInvTableColumn fx:id="IDDOC" fieldName="IDDOC" prefWidth="75.0" text="%LOG.IDDOC" />
+								<JInvTableColumn fx:id="AMOUNT" fieldName="AMOUNT" prefWidth="75.0" text="%LOG.AMOUNT" />
+								<JInvTableColumn fx:id="LOG_NSTATUS" fieldName="NSTATUS" prefWidth="75.0" text="%LOG.NSTATUS" />
+								<JInvTableColumn fx:id="LOG_CERRMSG" fieldName="CERRMSG" prefWidth="75.0" text="%LOG.CERRMSG" />
+								<JInvTableColumn fx:id="LOG_ITRNNUM" fieldName="ITRNNUM" prefWidth="75.0" text="%LOG.ITRNNUM" />
+								<JInvTableColumn fx:id="LOG_ITRNANUM" fieldName="ITRNANUM" prefWidth="75.0" text="%LOG.ITRNANUM" />
+							 </columns>
+						  </JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.PROBLEM"> <!-- Проблемы -->
+					   <content>
+						  <JInvTable fx:id="MTBVXD_PROBLEM" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="P_ID" fieldName="P_ID" prefWidth="75.0" text="%PROBLEM.P_ID" />
+								<JInvTableColumnDate fx:id="P_DATE" fieldName="P_DATE" prefWidth="75.0" text="%PROBLEM.P_DATE" />
+								<JInvTableColumn fx:id="P_SOURCE" fieldName="P_SOURCE" prefWidth="75.0" text="%PROBLEM.P_SOURCE" />
+							 </columns>
+						 </JInvTable>
+					   </content>
+					</Tab>
+					<Tab text="%TAB.SPARK"> <!-- СПАРК -->
+					   <content>
+						 <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+							<items>
+								<JInvTable fx:id="MTBVXD_RISK" tableMenuButtonVisible="true">
+								 <columns>
+									<JInvTableColumn fx:id="ID_MTB_SPARK_RISK" fieldName="ID_MTB_SPARK_RISK" prefWidth="75.0" text="%RISK.ID_MTB_SPARK_RISK" />
+									<JInvTableColumnDate fx:id="RISK_DDATEINS" fieldName="DDATEINS" prefWidth="75.0" text="%RISK.DDATEINS" />
+									<JInvTableColumn fx:id="RISK_CINN" fieldName="CINN" prefWidth="75.0" text="%RISK.CINN" />
+									<JInvTableColumn fx:id="RISK_CRESPONSE" fieldName="CRESPONSE" prefWidth="75.0" text="%RISK.CRESPONSE" />
+									<JInvTableColumn fx:id="RISK_CUSER" fieldName="CUSER" prefWidth="75.0" text="%RISK.CUSER" />
+									<JInvTableColumn fx:id="RISK_XCOID" fieldName="XCOID" prefWidth="75.0" text="%RISK.XCOID" />
+									<JInvTableColumn fx:id="RISK_SPARKID" fieldName="SPARKID" prefWidth="75.0" text="%RISK.SPARKID" />
+									<JInvTableColumn fx:id="RISK_COGRN" fieldName="COGRN" prefWidth="75.0" text="%RISK.COGRN" />
+									<JInvTableColumn fx:id="CFIO" fieldName="CFIO" prefWidth="75.0" text="%RISK.CFIO" />
+									<JInvTableColumn fx:id="RISK_DBIRTHDAY" fieldName="DBIRTHDAY" prefWidth="75.0" text="%RISK.DBIRTHDAY" />
+									<JInvTableColumn fx:id="REQTYPE" fieldName="REQTYPE" prefWidth="75.0" text="%RISK.REQTYPE" />
+								 </columns>
+								</JInvTable>
+								<JInvTable fx:id="MTBVXD_SPARK_Q" tableMenuButtonVisible="true">
+								 <columns>
+									<JInvTableColumn fx:id="ISQID" fieldName="ISQID" prefWidth="75.0" text="%SPARK.ISQID" />
+									<JInvTableColumn fx:id="CSQSTATE" fieldName="CSQSTATE" prefWidth="75.0" text="%SPARK.CSQSTATE" />
+									<JInvTableColumnDate fx:id="TSQMOD" fieldName="TSQMOD" prefWidth="75.0" text="%SPARK.TSQMOD" />
+									<JInvTableColumn fx:id="CSQMETHOD" fieldName="CSQMETHOD" prefWidth="75.0" text="%SPARK.CSQMETHOD" />
+									<JInvTableColumn fx:id="XCID" fieldName="XCID" prefWidth="75.0" text="%SPARK.XCID" />
+									<JInvTableColumn fx:id="SPARKID" fieldName="SPARKID" prefWidth="75.0" text="%SPARK.SPARKID" />
+									<JInvTableColumn fx:id="CINN" fieldName="CINN" prefWidth="75.0" text="%SPARK.CINN" />
+									<JInvTableColumn fx:id="COGRN" fieldName="COGRN" prefWidth="75.0" text="%SPARK.COGRN" />
+									<JInvTableColumn fx:id="CNAME" fieldName="CNAME" prefWidth="75.0" text="%SPARK.CNAME" />
+									<JInvTableColumnDate fx:id="DBIRTHDAY" fieldName="DBIRTHDAY" prefWidth="75.0" text="%SPARK.DBIRTHDAY" />
+									<JInvTableColumn fx:id="CSQRESPONSE" fieldName="CSQRESPONSE" prefWidth="75.0" text="%SPARK.CSQRESPONSE" />
+									<JInvTableColumn fx:id="CSQRESULT" fieldName="CSQRESULT" prefWidth="75.0" text="%SPARK.CSQRESULT" />
+								 </columns>
+								</JInvTable>
+							</items>
+						  </SplitPane>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.CAMWS"> <!-- CAMWS -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_CAM_WS_Q2" tableMenuButtonVisible="true">
+						 <columns>
+							<JInvTableColumn fx:id="ID_MTB_CAM_WS_Q2" fieldName="ID_MTB_CAM_WS_Q2" prefWidth="75.0" text="%CAMWS.ID_MTB_CAM_WS_Q2" />
+							<JInvTableColumn fx:id="ID_MTB_EXT" fieldName="ID_MTB_EXT" prefWidth="75.0" text="%CAMWS.ID_MTB_EXT" />
+							<JInvTableColumn fx:id="ID_MTB_EXT_TYPE" fieldName="ID_MTB_EXT_TYPE" prefWidth="75.0" text="%CAMWS.ID_MTB_EXT_TYPE" />
+							<JInvTableColumn fx:id="CEXTREQID" fieldName="CEXTREQID" prefWidth="75.0" text="%CAMWS.CEXTREQID" />
+							<JInvTableColumn fx:id="CACC_PAN_TAIL4" fieldName="CACC_PAN_TAIL4" prefWidth="75.0" text="%CAMWS.CACC_PAN_TAIL4" />
+							<JInvTableColumnDate fx:id="CAMWS_DDATEINS" fieldName="DDATEINS" prefWidth="75.0" text="%CAMWS.WS_DDATEINS" />
+							<JInvTableColumnDate fx:id="CAMWS_DDATEUPD" fieldName="DDATEUPD" prefWidth="75.0" text="%CAMWS.DDATEUPD" />
+							<JInvTableColumn fx:id="CURN" fieldName="CURN" prefWidth="75.0" text="%CAMWS.CURN" />
+							<JInvTableColumn fx:id="CREQUEST" fieldName="CREQUEST" prefWidth="75.0" text="%CAMWS.WS_CREQUEST" />
+							<JInvTableColumn fx:id="CRESPONSE" fieldName="CRESPONSE" prefWidth="75.0" text="%CAMWS.WS_CRESPONSE" />
+							<JInvTableColumn fx:id="CAMWS_CUSER" fieldName="CUSER" prefWidth="75.0" text="%CAMWS.WS_CUSER" />
+							<JInvTableColumn fx:id="CAMWS_NSTATUS" fieldName="NSTATUS" prefWidth="75.0" text="%CAMWS.WS_NSTATUS" />
+							<JInvTableColumn fx:id="CAMWS_CERRMSG" fieldName="CERRMSG" prefWidth="75.0" text="%CAMWS.WS_CERRMSG" />
+						 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.VCWS"> <!-- VcWS -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_VCWS_Q" tableMenuButtonVisible="true">
+						 <columns>
+							<JInvTableColumn fx:id="IVCWSID" fieldName="IVCWSID" prefWidth="75.0" text="%VCWS.IVCWSID" />
+							<JInvTableColumnDate fx:id="TVCWSSTAMP" fieldName="TVCWSSTAMP" prefWidth="75.0" text="%VCWS.TVCWSSTAMP" />
+							<JInvTableColumnDate fx:id="TVCWSMOD" fieldName="TVCWSMOD" prefWidth="75.0" text="%VCWS.TVCWSMOD" />
+							<JInvTableColumn fx:id="CVCWSSTATE" fieldName="CVCWSSTATE" prefWidth="75.0" text="%VCWS.CVCWSSTATE" />
+							<JInvTableColumn fx:id="CVCWSMETHOD" fieldName="CVCWSMETHOD" prefWidth="75.0" text="%VCWS.CVCWSMETHOD" />
+							<JInvTableColumn fx:id="CVCWSCALLINGSYSTEM" fieldName="CVCWSCALLINGSYSTEM" prefWidth="75.0" text="%VCWS.CVCWSCALLINGSYSTEM" />
+							<JInvTableColumn fx:id="CVCWSEXTREQID" fieldName="CVCWSEXTREQID" prefWidth="75.0" text="%VCWS.CVCWSEXTREQID" />
+							<JInvTableColumn fx:id="CVCWSTERMINALID" fieldName="CVCWSTERMINALID" prefWidth="75.0" text="%VCWS.CVCWSTERMINALID" />
+							<JInvTableColumn fx:id="CVCWSCARDCONTRACTID" fieldName="CVCWSCARDCONTRACTID" prefWidth="75.0" text="%VCWS.CVCWSCARDCONTRACTID" />
+							<JInvTableColumn fx:id="IVCWSCODE" fieldName="IVCWSCODE" prefWidth="75.0" text="%VCWS.IVCWSCODE" />
+							<JInvTableColumn fx:id="CVCWSDESCRIPTION" fieldName="CVCWSDESCRIPTION" prefWidth="75.0" text="%VCWS.CVCWSDESCRIPTION" />
+							<JInvTableColumn fx:id="IVCWSREQID" fieldName="IVCWSREQID" prefWidth="75.0" text="%VCWS.IVCWSREQID" />
+							<JInvTableColumn fx:id="NVCWSAMOUNT" fieldName="NVCWSAMOUNT" prefWidth="75.0" text="%VCWS.NVCWSAMOUNT" />
+							<JInvTableColumn fx:id="CVCWSCURCODE" fieldName="CVCWSCURCODE" prefWidth="75.0" text="%VCWS.CVCWSCURCODE" />
+							<JInvTableColumn fx:id="CVCWSPHONE" fieldName="CVCWSPHONE" prefWidth="75.0" text="%VCWS.CVCWSPHONE" />
+							<JInvTableColumn fx:id="CVSWSSENDOTP" fieldName="CVSWSSENDOTP" prefWidth="75.0" text="%VCWS.CVSWSSENDOTP" />
+							<JInvTableColumn fx:id="CVCWSORDERID" fieldName="CVCWSORDERID" prefWidth="75.0" text="%VCWS.CVCWSORDERID" />
+							<JInvTableColumn fx:id="CVCWSMASKPAN" fieldName="CVCWSMASKPAN" prefWidth="75.0" text="%VCWS.CVCWSMASKPAN" />
+							<JInvTableColumn fx:id="CVCWSEXPDATE" fieldName="CVCWSEXPDATE" prefWidth="75.0" text="%VCWS.CVCWSEXPDATE" />
+							<JInvTableColumn fx:id="CVCWSAPPROVALCODE" fieldName="CVCWSAPPROVALCODE" prefWidth="75.0" text="%VCWS.CVCWSAPPROVALCODE" />
+							<JInvTableColumn fx:id="CVCWSAUTHLIMITID" fieldName="CVCWSAUTHLIMITID" prefWidth="75.0" text="%VCWS.CVCWSAUTHLIMITID" />
+							<JInvTableColumn fx:id="CVCWSOTP" fieldName="CVCWSOTP" prefWidth="75.0" text="%VCWS.CVCWSOTP" />
+						 </columns>        
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.PAY"> <!-- GCPay -->
+					  <content>
+						 <JInvTable fx:id="MTBVXD_PAY_Q" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="IGCPID" fieldName="IGCPID" prefWidth="75.0" text="%PAY.IGCPID" />
+								<JInvTableColumnDate fx:id="TGCPSTAMP" fieldName="TGCPSTAMP" prefWidth="75.0" text="%PAY.TGCPSTAMP" />
+								<JInvTableColumnDate fx:id="TGCPMOD" fieldName="TGCPMOD" prefWidth="75.0" text="%PAY.TGCPMOD" />
+								<JInvTableColumn fx:id="CGCPSTATUS" fieldName="CGCPSTATUS" prefWidth="75.0" text="%PAY.CGCPSTATUS" />
+								<JInvTableColumn fx:id="CGCPFUNC" fieldName="CGCPFUNC" prefWidth="75.0" text="%PAY.CGCPFUNC" />
+								<JInvTableColumn fx:id="ZGCPREQ" fieldName="ZGCPREQ" prefWidth="75.0" text="%PAY.ZGCPREQ" />
+								<JInvTableColumn fx:id="ZGCPRES" fieldName="ZGCPRES" prefWidth="75.0" text="%PAY.ZGCPRES" />
+								<JInvTableColumn fx:id="CGCPGUID" fieldName="CGCPGUID" prefWidth="75.0" text="%PAY.CGCPGUID" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.CARDPAY"> <!-- CardPay -->
+					   <content>
+						  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+							<items>
+								<JInvTable fx:id="MTBVXD_CARD_PAY_Q" tableMenuButtonVisible="true">
+								 <columns>
+									<JInvTableColumn fx:id="ICPID" fieldName="ICPID" prefWidth="75.0" text="%CARDPAY.ICPID" />
+									<JInvTableColumn fx:id="RCPGUID" fieldName="RCPGUID" prefWidth="75.0" text="%CARDPAY.RCPGUID" />
+									<JInvTableColumnDate fx:id="TCPSTAMP" fieldName="TCPSTAMP" prefWidth="75.0" text="%CARDPAY.TCPSTAMP" />
+									<JInvTableColumn fx:id="CCPSTATUS" fieldName="CCPSTATUS" prefWidth="75.0" text="%CARDPAY.CCPSTATUS" />
+									<JInvTableColumn fx:id="CCPVENDOR" fieldName="CCPVENDOR" prefWidth="75.0" text="%CARDPAY.CCPVENDOR" />
+									<JInvTableColumn fx:id="CCPURL" fieldName="CCPURL" prefWidth="75.0" text="%CARDPAY.CCPURL" />
+									<JInvTableColumn fx:id="CCPACTION" fieldName="CCPACTION" prefWidth="75.0" text="%CARDPAY.CCPACTION" />
+									<JInvTableColumn fx:id="CCPAUTHKEY" fieldName="CCPAUTHKEY" prefWidth="75.0" text="%CARDPAY.CCPAUTHKEY" />
+									<JInvTableColumn fx:id="CCPAUTHVALUE" fieldName="CCPAUTHVALUE" prefWidth="75.0" text="%CARDPAY.CCPAUTHVALUE" />
+									<JInvTableColumn fx:id="CCPREQUEST" fieldName="CCPREQUEST" prefWidth="75.0" text="%CARDPAY.CCPREQUEST" />
+									<JInvTableColumn fx:id="CCPRESPONSE" fieldName="CCPRESPONSE" prefWidth="75.0" text="%CARDPAY.CCPRESPONSE" />
+									<JInvTableColumn fx:id="CCPRESPONSEID" fieldName="CCPRESPONSEID" prefWidth="75.0" text="%CARDPAY.CCPRESPONSEID" />
+									<JInvTableColumn fx:id="CCPMSG" fieldName="CCPMSG" prefWidth="75.0" text="%CARDPAY.CCPMSG" />
+									<JInvTableColumn fx:id="CCPMETHOD" fieldName="CCPMETHOD" prefWidth="75.0" text="%CARDPAY.CCPMETHOD" />
+								 </columns>
+								</JInvTable>
+								<JInvTable fx:id="MTBVXD_CARD_PAY_MSG" tableMenuButtonVisible="true">
+								 <columns>
+									<JInvTableColumn fx:id="ICPMID" fieldName="ICPMID" prefWidth="75.0" text="%CARDPAYMSG.ICPMID" />
+									<JInvTableColumnDate fx:id="TCPMSTAMP" fieldName="TCPMSTAMP" prefWidth="75.0" text="%CARDPAYMSG.TCPMSTAMP" />
+									<JInvTableColumn fx:id="RCPMGUID" fieldName="RCPMGUID" prefWidth="75.0" text="%CARDPAYMSG.RCPMGUID" />
+									<JInvTableColumn fx:id="CCPMMSG" fieldName="CCPMMSG" prefWidth="75.0" text="%CARDPAYMSG.CCPMMSG" />
+									<JInvTableColumn fx:id="CCPMCHECK" fieldName="CCPMCHECK" prefWidth="75.0" text="%CARDPAYMSG.CCPMCHECK" />
+								 </columns>
+								</JInvTable>
+							</items>
+						  </SplitPane>
+					   </content>
+					</Tab>
+					<Tab text="%TAB.DBO"> <!-- ДБО -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_IN_Q" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="IFIQID" fieldName="IFIQID" prefWidth="75.0" text="%DBO.IFIQID" />
+								<JInvTableColumn fx:id="IFIQFTCID" fieldName="IFIQFTCID" prefWidth="75.0" text="%DBO.IFIQFTCID" />
+								<JInvTableColumn fx:id="CFIQFTCGUID" fieldName="CFIQFTCGUID" prefWidth="75.0" text="%DBO.CFIQFTCGUID" />
+								<JInvTableColumn fx:id="CFIQDTYPE" fieldName="CFIQDTYPE" prefWidth="75.0" text="%DBO.CFIQDTYPE" />
+								<JInvTableColumn fx:id="IFIQSTATUS" fieldName="IFIQSTATUS" prefWidth="75.0" text="%DBO.IFIQSTATUS" />
+								<JInvTableColumnDate fx:id="DBO_DSTAMP" fieldName="DSTAMP" prefWidth="75.0" text="%DBO.DSTAMP" />
+								<JInvTableColumn fx:id="CFIQMESSAGE" fieldName="CFIQMESSAGE" prefWidth="75.0" text="%DBO.CFIQMESSAGE" />
+								<JInvTableColumn fx:id="IFIQPROCCARDID" fieldName="IFIQPROCCARDID" prefWidth="75.0" text="%DBO.IFIQPROCCARDID" />
+								<JInvTableColumn fx:id="IFIQCAMWSID" fieldName="IFIQCAMWSID" prefWidth="75.0" text="%DBO.IFIQCAMWSID" />
+								<JInvTableColumn fx:id="NFIQCAMWSAMOUNT" fieldName="NFIQCAMWSAMOUNT" prefWidth="75.0" text="%DBO.NFIQCAMWSAMOUNT" />
+								<JInvTableColumn fx:id="IFIQIPLCID" fieldName="IFIQIPLCID" prefWidth="75.0" text="%DBO.IFIQIPLCID" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.DBOVP"> <!-- ДБО-Вып. -->
+					  <content>
+						  <JInvTable fx:id="MTBVXD_STM_Q" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="IFSQID" fieldName="IFSQID" prefWidth="75.0" text="%DBOVP.IFSQID" />
+								<JInvTableColumn fx:id="CACC" fieldName="CACC" prefWidth="75.0" text="%DBOVP.CACC" />
+								<JInvTableColumn fx:id="CCUR" fieldName="CCUR" prefWidth="75.0" text="%DBOVP.CCUR" />
+								<JInvTableColumn fx:id="IDSMR" fieldName="IDSMR" prefWidth="75.0" text="%DBOVP.IDSMR" />
+								<JInvTableColumn fx:id="IFSQTYPE" fieldName="IFSQTYPE" prefWidth="75.0" text="%DBOVP.IFSQTYPE" />
+								<JInvTableColumn fx:id="ISTATUS" fieldName="ISTATUS" prefWidth="75.0" text="%DBOVP.ISTATUS" />
+								<JInvTableColumnDate fx:id="DSTAMP" fieldName="DSTAMP" prefWidth="75.0" text="%DBOVP.DSTAMP" />
+								<JInvTableColumnDate fx:id="DCREATE" fieldName="DCREATE" prefWidth="75.0" text="%DBOVP.DCREATE" />
+								<JInvTableColumnDate fx:id="DBEG" fieldName="DBEG" prefWidth="75.0" text="%DBOVP.DBEG" />
+								<JInvTableColumnDate fx:id="DEND" fieldName="DEND" prefWidth="75.0" text="%DBOVP.DEND" />
+								<JInvTableColumn fx:id="CF" fieldName="CF" prefWidth="75.0" text="%DBOVP.CF" />
+							 </columns> 
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.DBOREG"> <!-- ДБО-Рег. -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_QUERY_REG_TMP" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="DBOREG_ICUSNUM" fieldName="ICUSNUM" prefWidth="75.0" text="%DBOREG.ICUSNUM" />
+								<JInvTableColumnDate fx:id="TSYSDATE" fieldName="TSYSDATE" prefWidth="75.0" text="%DBOREG.TSYSDATE" />
+								<JInvTableColumn fx:id="MESSAGE" fieldName="MESSAGE" prefWidth="75.0" text="%DBOREG.MESSAGE" />
+								<JInvTableColumn fx:id="CRETCODE" fieldName="CRETCODE" prefWidth="75.0" text="%DBOREG.CRETCODE" />
+								<JInvTableColumn fx:id="DBOREG_CERRMSG" fieldName="CERRMSG" prefWidth="75.0" text="%DBOREG.CERRMSG" />
+								<JInvTableColumn fx:id="TRANS_MARK" fieldName="TRANS_MARK" prefWidth="75.0" text="%DBOREG.TRANS_MARK" />
+								<JInvTableColumn fx:id="CLOGIN" fieldName="CLOGIN" prefWidth="75.0" text="%DBOREG.CLOGIN" />
+								<JInvTableColumn fx:id="INUMREC" fieldName="INUMREC" prefWidth="75.0" text="%DBOREG.INUMREC" />
+								<JInvTableColumnDate fx:id="TSYSDATE_TRANS" fieldName="TSYSDATE_TRANS" prefWidth="75.0" text="%DBOREG.TSYSDATE_TRANS" />
+								<JInvTableColumn fx:id="CSYSTEM" fieldName="CSYSTEM" prefWidth="75.0" text="%DBOREG.CSYSTEM" />
+								<JInvTableColumn fx:id="QUERYTYPE" fieldName="QUERYTYPE" prefWidth="75.0" text="%DBOREG.QUERYTYPE" />
+							 </columns>
+						</JInvTable> 
+					  </content>
+					</Tab>
+					<Tab text="%TAB.DEPOSIT"> <!-- Депозиты -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_DEPOSIT_Q" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="ID_MTB_DEPOSIT_Q" fieldName="ID_MTB_DEPOSIT_Q" prefWidth="75.0" text="%DEPOSIT.ID_MTB_DEPOSIT_Q" />
+								<JInvTableColumn fx:id="ID_MTB_CAM_WS_Q" fieldName="ID_MTB_CAM_WS_Q" prefWidth="75.0" text="%DEPOSIT.ID_MTB_CAM_WS_Q" />
+								<JInvTableColumn fx:id="DEPOSIT_ICUSNUM" fieldName="ICUSNUM" prefWidth="75.0" text="%DEPOSIT.ICUSNUM" />
+								<JInvTableColumn fx:id="IDFAKTURA" fieldName="IDFAKTURA" prefWidth="75.0" text="%DEPOSIT.IDFAKTURA" />
+								<JInvTableColumn fx:id="IQDGIDENT" fieldName="IQDGIDENT" prefWidth="75.0" text="%DEPOSIT.IQDGIDENT" />
+								<JInvTableColumn fx:id="CACCD" fieldName="CACCD" prefWidth="75.0" text="%DEPOSIT.CACCD" />
+								<JInvTableColumn fx:id="NAMOUNT" fieldName="NAMOUNT" prefWidth="75.0" text="%DEPOSIT.NAMOUNT" />
+								<JInvTableColumnDate fx:id="DDATEINS" fieldName="DDATEINS" prefWidth="75.0" text="%DEPOSIT.DDATEINS" />
+								<JInvTableColumnDate fx:id="DDATEUPD" fieldName="DDATEUPD" prefWidth="75.0" text="%DEPOSIT.DDATEUPD" />
+								<JInvTableColumn fx:id="NTYPE" fieldName="NTYPE" prefWidth="75.0" text="%DEPOSIT.NTYPE" />
+								<JInvTableColumn fx:id="DEPOSIT_CUSER" fieldName="CUSER" prefWidth="75.0" text="%DEPOSIT.CUSER" />
+								<JInvTableColumn fx:id="DEPOSIT_NSTATUS" fieldName="NSTATUS" prefWidth="75.0" text="%DEPOSIT.NSTATUS" />
+								<JInvTableColumn fx:id="DEPOSIT_CERRMSG" fieldName="CERRMSG" prefWidth="75.0" text="%DEPOSIT.CERRMSG" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.IDBANK"> <!-- iDБанк -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_QUEUES_IDBANK" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="IDBANK_ID" fieldName="ID" prefWidth="75.0" text="%IDBANK.ID" />
+								<JInvTableColumn fx:id="STATUS" fieldName="STATUS" prefWidth="75.0" text="%IDBANK.STATUS" />
+								<JInvTableColumn fx:id="BODYRES" fieldName="BODYRES" prefWidth="75.0" text="%IDBANK.BODYRES" />
+								<JInvTableColumn fx:id="BODYREQ" fieldName="BODYREQ" prefWidth="75.0" text="%IDBANK.BODYREQ" />
+								<JInvTableColumnDate fx:id="DATECREATE" fieldName="DATECREATE" prefWidth="75.0" text="%IDBANK.DATECREATE" />
+								<JInvTableColumnDate fx:id="DATEUPDATE" fieldName="DATEUPDATE" prefWidth="75.0" text="%IDBANK.DATEUPDATE" />
+								<JInvTableColumn fx:id="TYPE" fieldName="TYPE" prefWidth="75.0" text="%IDBANK.TYPE" />
+								<JInvTableColumn fx:id="IDBCUSNUM" fieldName="IDBCUSNUM" prefWidth="75.0" text="%IDBANK.IDBCUSNUM" />
+								<JInvTableColumn fx:id="IDUSER" fieldName="IDUSER" prefWidth="75.0" text="%IDBANK.IDUSER" />
+								<JInvTableColumn fx:id="JOB" fieldName="JOB" prefWidth="75.0" text="%IDBANK.JOB" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.ELMA"> <!-- ЭЛМА -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_CHECK_FL" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="ELMA_ID" fieldName="ID" prefWidth="75.0" text="%ELMA.ID" />
+								<JInvTableColumn fx:id="IDCUS" fieldName="IDCUS" prefWidth="75.0" text="%ELMA.IDCUS" />
+								<JInvTableColumn fx:id="CUSFIO" fieldName="CUSFIO" prefWidth="75.0" text="%ELMA.CUSFIO" />
+								<JInvTableColumn fx:id="ID_IDBANK" fieldName="ID_IDBANK" prefWidth="75.0" text="%ELMA.ID_IDBANK" />
+								<JInvTableColumn fx:id="CHECK_EXTREM" fieldName="CHECK_EXTREM" prefWidth="75.0" text="%ELMA.CHECK_EXTREM" />
+								<JInvTableColumn fx:id="CHECK_PASP" fieldName="CHECK_PASP" prefWidth="75.0" text="%ELMA.TYPE" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.SMSEMAIL"> <!-- SMS/EMail -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_MSG_STATE" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumnDate fx:id="DMSGCREATE" fieldName="DMSGCREATE" prefWidth="75.0" text="%SMSEMAIL.DMSGCREATE" />
+								<JInvTableColumn fx:id="CTYPE" fieldName="CTYPE" prefWidth="75.0" text="%SMSEMAIL.CTYPE" />
+								<JInvTableColumn fx:id="SENDER" fieldName="SENDER" prefWidth="75.0" text="%SMSEMAIL.SENDER" />
+								<JInvTableColumn fx:id="RECEIVER" fieldName="RECEIVER" prefWidth="75.0" text="%SMSEMAIL.RECEIVER" />
+								<JInvTableColumn fx:id="SUBJECT" fieldName="SUBJECT" prefWidth="75.0" text="%SMSEMAIL.SUBJECT" />
+								<JInvTableColumn fx:id="MSG_BODY" fieldName="MSG_BODY" prefWidth="75.0" text="%SMSEMAIL.MSG_BODY" />
+								<JInvTableColumnDate fx:id="DMSGSSTAMP" fieldName="DMSGSSTAMP" prefWidth="75.0" text="%SMSEMAIL.DMSGSSTAMP" />
+								<JInvTableColumn fx:id="IMSGTYPE" fieldName="IMSGTYPE" prefWidth="75.0" text="%SMSEMAIL.IMSGTYPE" />
+								<JInvTableColumn fx:id="ATTACH_NAMES" fieldName="ATTACH_NAMES" prefWidth="75.0" text="%SMSEMAIL.ATTACH_NAMES" />	
+								<JInvTableColumn fx:id="IMSGID" fieldName="IMSGID" prefWidth="75.0" text="%SMSEMAIL.IMSGID" />
+								<JInvTableColumn fx:id="IMSGAID" fieldName="IMSGAID" prefWidth="75.0" text="%SMSEMAIL.IMSGAID" />
+								<JInvTableColumn fx:id="STATE_COMMENT" fieldName="STATE_COMMENT" prefWidth="75.0" text="%SMSEMAIL.STATE_COMMENT" />
+								<JInvTableColumn fx:id="STATE_CODE" fieldName="STATE_CODE" prefWidth="75.0" text="%SMSEMAIL.STATE_CODE" />       
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.MARKETPLACE"> <!-- MarketPlace -->
+					  <content>
+						<SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+							<items>
+							
+								<JInvTable fx:id="MTBVXD_MP_DEP_REQ" tableMenuButtonVisible="true">
+								 <columns>
+									 <JInvTableColumn fx:id="CMDRCUSID" fieldName="CMDRCUSID" prefWidth="75.0" text="%MARKETPLACE.CMDRCUSID" />
+									 <JInvTableColumnDate fx:id="TMDRSTAMP" fieldName="TMDRSTAMP" prefWidth="75.0" text="%MARKETPLACE.TMDRSTAMP" />
+									 <JInvTableColumn fx:id="IMDRPASSP" fieldName="IMDRPASSP" prefWidth="75.0" text="%MARKETPLACE.IMDRPASSP" />
+									 <JInvTableColumn fx:id="IMDRRESTRICT" fieldName="IMDRRESTRICT" prefWidth="75.0" text="%MARKETPLACE.IMDRRESTRICT" />
+									 <JInvTableColumn fx:id="CMDRCURRENTACC" fieldName="CMDRCURRENTACC" prefWidth="75.0" text="%MARKETPLACE.CMDRCURRENTACC" />
+									 <JInvTableColumn fx:id="IMDRCUSNUM" fieldName="IMDRCUSNUM" prefWidth="75.0" text="%MARKETPLACE.IMDRCUSNUM" />
+									 <JInvTableColumn fx:id="CMDRERR" fieldName="CMDRERR" prefWidth="75.0" text="%MARKETPLACE.CMDRERR" />
+									 <JInvTableColumn fx:id="ZMDRCLIPAR" fieldName="ZMDRCLIPAR" prefWidth="75.0" text="%MARKETPLACE.ZMDRCLIPAR" />
+									 <JInvTableColumn fx:id="IMDRSTATUS" fieldName="IMDRSTATUS" prefWidth="75.0" text="%MARKETPLACE.IMDRSTATUS" />
+									 <JInvTableColumn fx:id="CMDRAGRNUM" fieldName="CMDRAGRNUM" prefWidth="75.0" text="%MARKETPLACE.CMDRAGRNUM" />
+									 <JInvTableColumn fx:id="CMDRAGRID" fieldName="CMDRAGRID" prefWidth="75.0" text="%MARKETPLACE.CMDRAGRID" />
+									 <JInvTableColumn fx:id="MARKETPLACE_IMDRID" fieldName="IMDRID" prefWidth="75.0" text="%MARKETPLACE.IMDRID" />
+								 </columns>
+								</JInvTable>
+								<JInvTable fx:id="MTBVXD_MP_DEP_EVENT" tableMenuButtonVisible="true">
+								 <columns>
+									<JInvTableColumn fx:id="MARKETPLACEVENT_IMDRID" fieldName="IMDRID" prefWidth="75.0" text="%MARKETPLACEVENT.IMDRID" />
+									<JInvTableColumnDate fx:id="TMDESTAMP" fieldName="TMDESTAMP" prefWidth="75.0" text="%MARKETPLACEVENT.TMDESTAMP" />
+									<JInvTableColumnDate fx:id="TMDEMOD" fieldName="TMDEMOD" prefWidth="75.0" text="%MARKETPLACEVENT.TMDEMOD" />
+									<JInvTableColumn fx:id="CMDECOMMENT" fieldName="CMDECOMMENT" prefWidth="75.0" text="%MARKETPLACEVENT.CMDECOMMENT" />
+									<JInvTableColumn fx:id="CMDEUSER" fieldName="CMDEUSER" prefWidth="75.0" text="%MARKETPLACEVENT.CMDEUSER" />
+									<JInvTableColumn fx:id="IMDESTATUS" fieldName="IMDESTATUS" prefWidth="75.0" text="%MARKETPLACEVENT.IMDESTATUS" />
+									<JInvTableColumn fx:id="IMDEQEV" fieldName="IMDEQEV" prefWidth="75.0" text="%MARKETPLACEVENT.IMDEQEV" />
+									<JInvTableColumn fx:id="CMDEID" fieldName="CMDEID" prefWidth="75.0" text="%MARKETPLACEVENT.CMDEID" />
+									<JInvTableColumn fx:id="CMDETYPE" fieldName="CMDETYPE" prefWidth="75.0" text="%MARKETPLACEVENT.CMDETYPE" />
+									<JInvTableColumn fx:id="CMDENAME" fieldName="CMDENAME" prefWidth="75.0" text="%MARKETPLACEVENT.CMDENAME" />
+									<JInvTableColumn fx:id="CMDEBODY" fieldName="CMDEBODY" prefWidth="75.0" text="%MARKETPLACEVENT.CMDEBODY" />
+									<JInvTableColumn fx:id="IMDEID" fieldName="IMDEID" prefWidth="75.0" text="%MARKETPLACEVENT.IMDEID" />    
+								 </columns>
+								</JInvTable>
+							</items>
+						  </SplitPane>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.YBI"> <!-- УБИ -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_GO_DOCUMENT" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="IGODOCID" fieldName="IGODOCID" prefWidth="75.0" text="%YBI.IGODOCID" />
+								<JInvTableColumnDate fx:id="DGODOCDATE" fieldName="DGODOCDATE" prefWidth="75.0" text="%YBI.DGODOCDATE" />
+								<JInvTableColumn fx:id="RGODOCREF" fieldName="RGODOCREF" prefWidth="75.0" text="%YBI.RGODOCREF" />
+								<JInvTableColumn fx:id="RGODOCGUID" fieldName="RGODOCGUID" prefWidth="75.0" text="%YBI.RGODOCGUID" />
+								<JInvTableColumn fx:id="IGODOCSTATE" fieldName="IGODOCSTATE" prefWidth="75.0" text="%YBI.IGODOCSTATE" />
+								<JInvTableColumn fx:id="CGODOCSRC" fieldName="CGODOCSRC" prefWidth="75.0" text="%YBI.CGODOCSRC" />
+								<JInvTableColumn fx:id="CGODOCBODY" fieldName="CGODOCBODY" prefWidth="75.0" text="%YBI.CGODOCBODY" />
+								<JInvTableColumn fx:id="IGODOCABSID" fieldName="IGODOCABSID" prefWidth="75.0" text="%YBI.IGODOCABSID" />
+								<JInvTableColumn fx:id="CGODOCMESSAGE" fieldName="CGODOCMESSAGE" prefWidth="75.0" text="%YBI.CGODOCMESSAGE" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.MOEX"> <!-- MOEX -->
+					  <content>
+					  <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+							<items>
+								<JInvTable fx:id="MTBVXD_CUR_ORDER" tableMenuButtonVisible="true">
+									<columns>
+										<JInvTableColumn fx:id="ID_MTB_CUR_ORDER" fieldName="ID_MTB_CUR_ORDER" prefWidth="75.0" text="%MOEX.ID_MTB_CUR_ORDER" />
+										<JInvTableColumn fx:id="ICUSNUM" fieldName="ICUSNUM" prefWidth="75.0" text="%MOEX.ICUSNUM" />
+										<JInvTableColumnDate fx:id="DDOCDATE" fieldName="DDOCDATE" prefWidth="75.0" text="%MOEX.DDOCDATE" />
+										<JInvTableColumn fx:id="CORDER_NUM" fieldName="CORDER_NUM" prefWidth="75.0" text="%MOEX.CORDER_NUM" />
+										<JInvTableColumn fx:id="ITRNNUM" fieldName="ITRNNUM" prefWidth="75.0" text="%MOEX.ITRNNUM" />
+										<JInvTableColumn fx:id="ITRNANUM" fieldName="ITRNANUM" prefWidth="75.0" text="%MOEX.ITRNANUM" />
+										<JInvTableColumn fx:id="CBUYSELL" fieldName="CBUYSELL" prefWidth="75.0" text="%MOEX.CBUYSELL" />
+										<JInvTableColumn fx:id="NSUM_DT" fieldName="NSUM_DT" prefWidth="75.0" text="%MOEX.NSUM_DT" />
+										<JInvTableColumn fx:id="CCUR_DT" fieldName="CCUR_DT" prefWidth="75.0" text="%MOEX.CCUR_DT" />
+										<JInvTableColumn fx:id="NSUM_KT" fieldName="NSUM_KT" prefWidth="75.0" text="%MOEX.NSUM_KT" />
+										<JInvTableColumn fx:id="CCUR_KT" fieldName="CCUR_KT" prefWidth="75.0" text="%MOEX.CCUR_KT" />
+										<JInvTableColumn fx:id="NVALUE" fieldName="NVALUE" prefWidth="75.0" text="%MOEX.NVALUE" />
+										<JInvTableColumn fx:id="NQUANTITY" fieldName="NQUANTITY" prefWidth="75.0" text="%MOEX.NQUANTITY" />
+										<JInvTableColumn fx:id="NCOURSE_CUS" fieldName="NCOURSE_CUS" prefWidth="75.0" text="%MOEX.NCOURSE_CUS" />
+										<JInvTableColumn fx:id="NCOURSE_WM" fieldName="NCOURSE_WM" prefWidth="75.0" text="%MOEX.NCOURSE_WM" />
+										<JInvTableColumn fx:id="NCOURSE_WT" fieldName="NCOURSE_WT" prefWidth="75.0" text="%MOEX.NCOURSE_WT" />
+										<JInvTableColumn fx:id="NMARGIN_MIN" fieldName="NMARGIN_MIN" prefWidth="75.0" text="%MOEX.NMARGIN_MIN" />
+										<JInvTableColumn fx:id="NMARGIN_PLAN" fieldName="NMARGIN_PLAN" prefWidth="75.0" text="%MOEX.NMARGIN_PLAN" />
+										<JInvTableColumn fx:id="NMARGIN_ACTUAL" fieldName="NMARGIN_ACTUAL" prefWidth="75.0" text="%MOEX.NMARGIN_ACTUAL" />
+										<JInvTableColumnDate fx:id="DSTATUS" fieldName="DSTATUS" prefWidth="75.0" text="%MOEX.DSTATUS" />
+										<JInvTableColumn fx:id="CUSER" fieldName="CUSER" prefWidth="75.0" text="%MOEX.CUSER" />
+										<JInvTableColumn fx:id="NSTATUS" fieldName="NSTATUS" prefWidth="75.0" text="%MOEX.NSTATUS" />
+										<JInvTableColumn fx:id="CERRMSG" fieldName="CERRMSG" prefWidth="75.0" text="%MOEX.CERRMSG" />
+										<JInvTableColumn fx:id="CSECCODE" fieldName="CSECCODE" prefWidth="75.0" text="%MOEX.CSECCODE" />
+									 </columns>
+								</JInvTable>
+								<JInvTable fx:id="MTBVXD_DBO_MICEX_TRN_DEL" tableMenuButtonVisible="true">
+								 <columns>
+									<JInvTableColumnDate fx:id="MOEXDEL_TSTAMP" fieldName="TSTAMP" prefWidth="75.0" text="%MOEXDEL.TSTAMP" />
+									<JInvTableColumn fx:id="MOEXDEL_ISTATE" fieldName="ISTATE" prefWidth="75.0" text="%MOEXDEL.ISTATE" />
+									<JInvTableColumn fx:id="MOEXDEL_INUM" fieldName="INUM" prefWidth="75.0" text="%MOEXDEL.INUM" />
+									<JInvTableColumn fx:id="MOEXDEL_IANUM" fieldName="IANUM" prefWidth="75.0" text="%MOEXDEL.IANUM" />
+									<JInvTableColumn fx:id="MOEXDEL_CMSG" fieldName="CMSG" prefWidth="75.0" text="%MOEXDEL.CMSG" />
+								 </columns>
+								</JInvTable>  
+								<JInvTable fx:id="MTBVXD_DBO_MICEX_TRN_AFF" tableMenuButtonVisible="true">
+								 <columns>
+									<JInvTableColumn fx:id="MOEXAFF_ISTATE" fieldName="ISTATE" prefWidth="75.0" text="%MOEXAFF.ISTATE" />
+									<JInvTableColumn fx:id="MOEXAFF_CMSG" fieldName="CMSG" prefWidth="75.0" text="%MOEXAFF.CMSG" />
+									<JInvTableColumn fx:id="MOEXAFF_INUM" fieldName="INUM" prefWidth="75.0" text="%MOEXAFF.INUM" />
+									<JInvTableColumnDate fx:id="MOEXAFF_TSTAMP" fieldName="TSTAMP" prefWidth="75.0" text="%MOEXAFF.TSTAMP" />
+									<JInvTableColumn fx:id="MOEXAFF_IANUM" fieldName="IANUM" prefWidth="75.0" text="%MOEXAFF.IANUM" />
+								 </columns>
+								</JInvTable>  	         					
+							</items>
+						  </SplitPane>
+					   
+					  </content>
+					</Tab>
+					<Tab text="%TAB.CRYPTO"> <!-- Крипто -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_JCP_Q" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="IJCPID" fieldName="IJCPID" prefWidth="75.0" text="%CRYPTO.IJCPID" />
+								<JInvTableColumnDate fx:id="TJCPSTAMP" fieldName="TJCPSTAMP" prefWidth="75.0" text="%CRYPTO.TJCPSTAMP" />
+								<JInvTableColumn fx:id="CJCPSTATUS" fieldName="CJCPSTATUS" prefWidth="75.0" text="%CRYPTO.CJCPSTATUS" />
+								<JInvTableColumn fx:id="CJCPMETHOD" fieldName="CJCPMETHOD" prefWidth="75.0" text="%CRYPTO.CJCPMETHOD" />
+								<JInvTableColumn fx:id="CJCPKEYID" fieldName="CJCPKEYID" prefWidth="75.0" text="%CRYPTO.CJCPKEYID" />
+								<JInvTableColumn fx:id="ZJCPTEXT" fieldName="ZJCPTEXT" prefWidth="75.0" text="%CRYPTO.ZJCPTEXT" />
+								<JInvTableColumn fx:id="ZJCPCTEXT" fieldName="ZJCPCTEXT" prefWidth="75.0" text="%CRYPTO.ZJCPCTEXT" />
+								<JInvTableColumn fx:id="IJCPEXT" fieldName="IJCPEXT" prefWidth="75.0" text="%CRYPTO.IJCPEXT" />
+								<JInvTableColumn fx:id="CJCPMSG" fieldName="CJCPMSG" prefWidth="75.0" text="%CRYPTO.CJCPMSG" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+					<Tab text="%TAB.API"> <!-- API -->
+					  <content>
+						<JInvTable fx:id="MTBVXD_API_CALL" tableMenuButtonVisible="true">
+							 <columns>
+								<JInvTableColumn fx:id="IBACID" fieldName="IBACID" prefWidth="75.0" text="%API.IBACID" />
+								<JInvTableColumn fx:id="CBACCLIENT" fieldName="CBACCLIENT" prefWidth="75.0" text="%API.CBACCLIENT" />
+								<JInvTableColumnDate fx:id="TBACSTAMP" fieldName="TBACSTAMP" prefWidth="75.0" text="%API.TBACSTAMP" />
+								<JInvTableColumn fx:id="CBACNAME" fieldName="CBACNAME" prefWidth="75.0" text="%API.CBACNAME" />
+								<JInvTableColumn fx:id="RBACGUID" fieldName="RBACGUID" prefWidth="75.0" text="%API.RBACGUID" />
+								<JInvTableColumn fx:id="IBACSTATUS" fieldName="IBACSTATUS" prefWidth="75.0" text="%API.IBACSTATUS" />
+								<JInvTableColumn fx:id="CBACREQUEST" fieldName="CBACREQUEST" prefWidth="75.0" text="%API.CBACREQUEST" />
+								<JInvTableColumn fx:id="CBACRESPONSE" fieldName="CBACRESPONSE" prefWidth="75.0" text="%API.CBACRESPONSE" />
+							 </columns>
+						</JInvTable>
+					  </content>
+					</Tab>
+				 </tabs>
+			  </JInvTabPane>
+            <JInvTextArea fx:id="BIG_TEXT" editable="false" />
+			</items>
+		</SplitPane>
+   </children>
+</VBox>
